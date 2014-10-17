@@ -57,7 +57,8 @@ theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID As Varian
 	Wend
 	
 	'If the script is called before theEnd is run, it's FinishTime = 0
-	Dim ending As Long
+	Dim beginning As Long, ending As Long
+	beginning = theStart.StartTime
 	ending = theEnd.FinishTime
 	If ending = 0 Then ending = Clock.Read
 		
@@ -69,7 +70,7 @@ theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID As Varian
 		Set theResponseData = CResponseData(theHistory(index))
 	
 		'Writes to the text file all target response times relative to experiment start.
-		If theResponseData.RTTime >= theStart.StartTime And theResponseData.RTTime <= ending _
+		If theResponseData.RTTime >= beginning And theResponseData.RTTime <= ending _
 		And (IsMissing(resp) Or Instr(CStr(resp), theResponseData.Resp)) Then _
 			Print #1, theResponseData.RESP & ebtab & theResponseData.RTTime
 				
