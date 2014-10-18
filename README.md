@@ -3,7 +3,7 @@ bird-eprime
 
 Subroutines and Functions for use in Eprime (Psychology Software Tools, Inc)
 
-1. allFiles(c As Context, theList As List, attrib As String, path As Variant, Optional ext As Variant) As Boolean
+allFiles(c As Context, theList As List, attrib As String, path As Variant, Optional ext As Variant) As Boolean
 
 This Function Returns True if all files (.wav, .jpg, etc) required by theList are available. Add at the top of your procedure to prevent crashes mid-trial: Debug.Assert allFiles 
 	
@@ -15,7 +15,7 @@ path: Optional. You can specify the path to your attrib files here.
 	
 ext: include the file extension (with .) here, if not already provided by attrib.
 
-2. blockListCopy(c As Context, theList As List, attrib As String, Optional prevLevels As Variant)
+blockListCopy(c As Context, theList As List, attrib As String, Optional prevLevels As Variant)
 
 This sequence can be used in a random stimulus selection, blocked recognition memory paradigm (study-test-study-test, etc. Where previously studied words are sampled along with new words during each test phase.). blockListCopy is called once during each study phase. Other uses might be possible with modification.
 	
@@ -25,7 +25,7 @@ attrib: This is the name of your stimulus attribute. It must exist both in the c
 	
 prevLevels: This is the number of levels in your top level (block) list that are sampled in between each run of study and test trials. For example, if your block begins with one level (i.e. and instructions procedure) and then the Study Phase trials, you should use prevLevels = 1.
 
-3. checkErun() As Boolean
+checkErun() As Boolean
 
 For EGI Netstation (EEG) Users
 	
@@ -33,13 +33,13 @@ This function Returns FALSE if the experiment is configured to run without the E
 	
 The Eprime Extensions for Netstation package includes an E-Run.ini file. Some users comment out options in this file to switch between the standard clock (for running eprime without netstation) and the custom clock (for accurate timing when paired with netstation).
 
-4. superReset(theList As List)
+superReset(theList As List)
 
 Before Resetting theList, this sequence sets ResetCondition to all samples and TerminateCondition to 1 cycle.
 	
 Often ".Reset" alone will lead to unexpected ResetCondition and/or TerminateCondition behavior.
 
-5. tagitNS(c As Context, tags() As String, theStim As RteRunnableObject, Optional tagSpace As Variant)
+tagitNS(c As Context, tags() As String, theStim As RteRunnableObject, Optional tagSpace As Variant)
 
 For EGI Netstation and Brain Vision Analyzer (EEG) Users If you record EEG using Netstation and Eprime, the EENS TRSP information is not readable when your EEG recordings are exported to some Non-Netstation analysis software such as Brain Vision Analyzer.
 	
@@ -53,7 +53,7 @@ theStim: This is the trial event that will determine approximately where the new
 	
 tagSpace: This is the number in milliseconds that determines the spacing interval for each new tag. The default value is 50 ms. For example, the first item in tags() will be placed 50 ms after theStim, the second is placed 100 ms after theStim, etc. 50 ms is a compatible distance for Brain Vision Analyzer users.
 
-6. txtRespHist(c As Context, theDevice As InputDevice, theStart As RteRunnableObject, _
+txtRespHist(c As Context, theDevice As InputDevice, theStart As RteRunnableObject, _
 theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID As Variant)
 
 Eprime provides an input device history for storing the history of all device input regardless of input masks used during the experiment. This subroutine can be used to selectively copy this history information to a text file for later analysis. The input values are written to the text file along with the RTTime (timestamp relative to the start of the experiment).
