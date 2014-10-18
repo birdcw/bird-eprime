@@ -56,7 +56,7 @@ theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID As Varian
 		DoEvents
 	Wend
 	
-	'If the script is called before theEnd is run, it's FinishTime = 0
+	'If the script is called before theEnd is run, its FinishTime = 0
 	Dim beginning As Long, ending As Long
 	beginning = theStart.StartTime
 	ending = theEnd.FinishTime
