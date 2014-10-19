@@ -79,7 +79,8 @@ Sub recovery(fileID As String, Optional path As Variant, Optional ext As Variant
 	Set lis = Nothing
 	
 	For itm = 10 To 1 Step -1
-		Display.Canvas.Text Display.XRes/2 -50, Display.YRes/2, "Restarting in " & Format(CInt(itm),"00")
+		Display.Canvas.Text Display.XRes/2 -50, Display.YRes/2, _
+		"Restarting in " & Format(CInt(itm),"00")
 		Sleep(1000)
 	Next itm
 	
