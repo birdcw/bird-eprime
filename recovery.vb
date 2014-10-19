@@ -6,7 +6,7 @@ Sub recovery(fileID As String, Optional path As Variant, Optional ext As Variant
 	' IMPORTANT! This script uses the Tag property with every list object in your experiment.
 	' The script requires you to set the Tag for every list object to the total # of samples
 	' See "cycles x samples/cycle in the list's summary window. Cycles x samples/cycle is 
-	' is needed, but it is not available at runtime. Users of this script need to store that 
+	' needed, but it is not available at runtime. Users of this script need to store that 
 	' number in the Tag property. If PST ever adds support for the equivalent of
 	' Get cycles x samples/cycle, I will update this script and remove the tag requirement.
 	
