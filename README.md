@@ -15,6 +15,20 @@ path: Optional. You can specify the path to your attrib files here.
 	
 ext: include the file extension (with .) here, if not already provided by attrib.
 
+autoSample(theList As List, fileID As String, Optional path As Variant, Optional ext As Variant)
+
+Searches E-recovery text file fileID for all previously sampled items of list object theList. Those items are all re-sampled
+	
+Good for preventing items from getting sampled twice during a two session experiment. See my other script "recovery" for a more robust tool that can re-sample and a partially completed experiment for resuming using an incomplete E-recovery file.
+	
+theList: Items from this list found in the recovery file are re-sampled.
+	
+fileID e-recovery text file used to determine which items were previously sampled.
+	
+path: optional path to fileID, if not provided in fileID.
+	
+ext: optional extension (with .) for fileID, if not provided in fileID.
+
 blockListCopy(c As Context, theList As List, attrib As String, Optional prevLevels As Variant)
 
 This sequence can be used in a random stimulus selection, blocked recognition memory paradigm (study-test-study-test, etc. Where previously studied words are sampled along with new words during each test phase.). blockListCopy is called once during each study phase. Other uses might be possible with modification.
@@ -32,6 +46,22 @@ For EGI Netstation (EEG) Users
 This function Returns FALSE if the experiment is configured to run without the EGI custom clock. Accurate EEG timing is not to be expected when this function returns FALSE. For example, you can prevent running a session with the incorrect clock setup by adding at the top of your SessionProc: Debug.Assert checkErun
 	
 The Eprime Extensions for Netstation package includes an E-Run.ini file. Some users comment out options in this file to switch between the standard clock (for running eprime without netstation) and the custom clock (for accurate timing when paired with netstation).
+
+recovery(fileID As String, Optional path As Variant, Optional ext As Variant)
+
+Re-creates the conditions of an experiment using any incomplete E-Recovery data file. The experiment will seamlessly return to the original break point as if nothing happened.
+
+IMPORTANT! This script uses the Tag property with every list object in your experiment. The script requires you to set the Tag for every list object to the total # of samples See "cycles x samples/cycle in the list's summary window. Cycles x samples/cycle is needed, but it is not available at runtime. Users of this script need to store that number in the Tag property. If PST ever adds support for the equivalent of Get cycles x samples/cycle, I will update this script and remove the tag requirement.
+	
+CAUTION! If you need to make any changes to any list objects at runtime, such as SetWeight, Set TerminateCondition, Set ResetCondition, or Reset, you must do so BEFORE calling this script. This script will not be compatible with any experiments that require you to make changes after it has been called.
+	
+CAUTION! This script resumes the experiment inside the last running procedure. i.e. if your trial procedure requires displayed items that are written to the display in a prior procedure (instruction, key reminders written in an instruction procedure that are not cleared during the trial procedure, etc), those displays might be bypassed when resuming the experiment inside the last running procedure.
+	
+fileID: e-recovery text file used to determine which items were previously sampled.
+	
+path: optional path to fileID, if not provided in fileID.
+	
+ext: optional extension (with .) for fileID, if not provided in fileID.
 
 superReset(theList As List)
 
