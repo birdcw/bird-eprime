@@ -80,6 +80,20 @@ checkErun() As Boolean
 	options in this file to switch between the standard clock (for running eprime without netstation)
 	and the custom clock (for accurate timing when paired with netstation).
 
+prevSeed(fileID As String, Optional path As Variant, Optional ext As Variant)
+
+	This is an alternative to using a startup parameter to use RandomSeed for
+	running random selection experiments at an identical state as a previous session.
+	
+	Similar to my other two functions "autoSample" and "recovery" except the experiment
+	is run from the top here.
+	
+	fileID: e-recovery text file for acquiring a previously used RandomSeed.
+	
+	path: optional path to fileID, if not provided in fileID.
+	
+	ext: optional extension (with .) for fileID, if not provided in fileID.
+
 recovery(fileID As String, Optional path As Variant, Optional ext As Variant)
 
 	Re-creates the conditions of an experiment using any incomplete E-Recovery data file.
