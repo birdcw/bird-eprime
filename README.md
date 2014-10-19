@@ -52,6 +52,8 @@ recovery(fileID As String, Optional path As Variant, Optional ext As Variant)
 Re-creates the conditions of an experiment using any incomplete E-Recovery data file. The experiment will seamlessly return to the original break point as if nothing happened.
 
 IMPORTANT! This script uses the Tag property with every list object in your experiment. The script requires you to set the Tag for every list object to the total # of samples See "cycles x samples/cycle in the list's summary window. Cycles x samples/cycle is needed, but it is not available at runtime. Users of this script need to store that number in the Tag property. If PST ever adds support for the equivalent of Get cycles x samples/cycle, I will update this script and remove the tag requirement.
+
+IMPORTANT EXCEPTION: If your experiment uses a Counterbalance list, set its Tag to 2, not 1.
 	
 CAUTION! If you need to make any changes to any list objects at runtime, such as SetWeight, Set TerminateCondition, Set ResetCondition, or Reset, you must do so BEFORE calling this script. This script will not be compatible with any experiments that require you to make changes after it has been called.
 	
