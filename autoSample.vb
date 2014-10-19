@@ -8,7 +8,7 @@ Optional path As Variant, Optional ext As Variant)
 	'See my other script "recovery" for a more robust tool that can re-sample and
 	'a partially completed experiment for resuming using an incomplete E-recovery file.
 	
-	'theList: Sample all .
+	'theList: Items from this list found in the recovery file are re-sampled.
 	
 	'fileID e-recovery text file used to determine which items were previously sampled.
 	
