@@ -32,7 +32,7 @@ Optional path As Variant, Optional ext As Variant)
 		Line Input #1, lin
 		
 		If InStr(lin, theList.Name & ":") <> 0 Then
-			attrib = theList.GetNextAttrib(theList.Attribs.Item(2).Name)	
+			attrib = theList.GetNextAttrib(theList.Attribs.Item(1).Name)	
 		ElseIf Instr(lin, "RandomSeed:") <> 0 And _
 		CStr(Mid(lin, InStr(lin, ":") + 2)) <> CStr(PRNG.GetSeed) Then
 			PRNG.SetSeed CLng(Mid(lin, InStr(lin, ":") + 2))
