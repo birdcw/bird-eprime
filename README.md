@@ -138,7 +138,8 @@ tagitNS(c As Context, tags() As String, theStim As RteRunnableObject, Optional t
 		
 	tagSpace: This is the number in milliseconds that determines the spacing interval for each new tag. 
 	The default value is 50 ms. For example, the first item in tags() will be placed 50 ms after theStim, 
-	the second is placed 100 ms after theStim, etc. 50 ms is a compatible distance for Brain Vision Analyzer users.
+	the second is placed 100 ms after theStim, etc. 50 ms is a compatible distance for 
+	Brain Vision Analyzer users.
 
 txtRespHist(c As Context, theDevice As InputDevice, theStart As RteRunnableObject, _
 theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID As Variant)
