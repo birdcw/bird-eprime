@@ -10,6 +10,8 @@ Sub recovery(fileID As String, Optional path As Variant, Optional ext As Variant
 	' number in the Tag property. If PST ever adds support for the equivalent of
 	' Get cycles x samples/cycle, I will update this script and remove the tag requirement.
 	
+	' IMPORTANT EXCEPTION: If your experiment uses a Counterbalance list, set its Tag to 2, not 1.
+	
 	' CAUTION! If you need to make any changes to any list objects at runtime, such as SetWeight,
 	' Set TerminateCondition, Set ResetCondition, or Reset, you must do so BEFORE calling this script. 
 	' This script will not be compatible with any experiments that require you to make changes after 
