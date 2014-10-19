@@ -34,9 +34,9 @@ theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID As Varian
 	
 	'Default history max count of 64 indicates potential misuse.
 	If theDevice.History.MaxCount = 64 Then _
-		Debug.Print "CAUTION: You are using the default " & theDevice.Name & ".History.MaxCount = 64\n" &_
-		"This might not be a sufficiently high MaxCount For txtRespHist.\n" &_
-		"Maximum Values: " & theDevice.Name & ".History.MaxCount = 4096 (standard) or 1048576 (professional)"
+	Debug.Print "CAUTION: You are using the default " & theDevice.Name & ".History.MaxCount = 64\n" &_
+	"This might not be a sufficiently high MaxCount For txtRespHist.\n" &_
+	"Maximum Values: " & theDevice.Name & ".History.MaxCount = 4096 (standard) or 1048576 (professional)"
 		
 	'Default value
 	If IsMissing(fileID) Then fileID = "txtRespHist"
