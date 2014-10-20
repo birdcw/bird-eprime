@@ -51,12 +51,12 @@ theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID As Varian
 	Print #1, theDevice.Name & ebtab & "RTTime"
 	
 	Dim beginning As Long, ending As Long
-	If IsMissing(theStart) Or theStart Is Nothing Then 
+	If theStart Is Nothing Then 
 		beginning = 0
 	Else
 		beginning = theStart.StartTime
 	End If
-	If IsMissing(theEnd) Or theEnd Is Nothing Or theEnd.FinishTime = 0 Then
+	If theEnd Is Nothing Or theEnd.FinishTime = 0 Then
 		ending = Clock.Read
 	Else
 		ending = theEnd.FinishTime
