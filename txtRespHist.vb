@@ -1,5 +1,5 @@
-Sub txtRespHist(c As Context, theDevice As InputDevice, theStart As RteRunnableObject, _
-theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID As Variant)
+Sub txtRespHist(c As Context, theDevice As InputDevice, Optional theStart As RteRunnableObject, _
+Optional theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID As Variant)
 
 	' Eprime provides an input device history for storing the history of all 
 	' device input regardless of input masks used during the experiment. 
@@ -16,13 +16,10 @@ theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID As Varian
 
 	' theStart: Any runnable object such as a stimulus display or procedure. 
 	' The text file will only include input device activity that occurred after the 
-	' start time of this object. Set theStart to your top-level procedure (i.e. SessionProc) 
-	' if you want the text file to include input from the very beginning of your experiment.
-
+	' start time of this object.
+	
 	' theEnd: The other temporal bound. The text file will only include input device activity 
-	' that occurred before the finish time of this object. Set theEnd to your top-level 
-	' procedure (i.e. SessionProc) if you want the text file to include input all the way up 
-	' until the moment this subroutine is called.
+	' that occurred before the finish time of this object.
 
 	' resp: any string of eprime-style input "qwerty{SPACE}1234", etc. Optional - when resp 
 	' is omitted, input is written to the text regardless of the value.
@@ -51,16 +48,21 @@ theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID As Varian
 	'file headers
 	Print #1, theDevice.Name & ebtab & "RTTime"
 	
-	'Eprime pre-release might cause this script to run before theStart.StartTime or theEnd.FinishTime
-	While Clock.Read < theStart.StartTime Or Clock.Read < theEnd.FinishTime
-		DoEvents
-	Wend
-	
-	'If the script is called before theEnd is run, its FinishTime = 0
 	Dim beginning As Long, ending As Long
-	beginning = theStart.StartTime
-	ending = theEnd.FinishTime
-	If ending = 0 Then ending = Clock.Read
+	If IsMissing(theStart) Then 
+		beginning = 0
+	Else
+		beginning = theStart.StartTime
+	End If
+	If IsMissing(theEnd) Or theEnd.FinishTime = 0 Then
+		ending = Clock.Read
+	Else
+		ending = theEnd.FinishTime
+	End If
+	'Eprime pre-release might cause this script to run before theStart.StartTime or theEnd.FinishTime
+	While Clock.Read < beginning Or Clock.Read < ending
+	DoEvents
+	Wend
 		
 	Dim theResponseData As ResponseData, theHistory As RteCollection, index As Long
 	Set theHistory = theDevice.History.Clone
