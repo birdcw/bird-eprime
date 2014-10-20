@@ -66,21 +66,25 @@ Optional theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID 
 		
 	Dim theResponseData As ResponseData, theHistory As RteCollection, index As Long
 	Set theHistory = theDevice.History.Clone
-
-	For index = 1 To theHistory.Count
 	
-		Set theResponseData = CResponseData(theHistory(index))
+	If theHistory Is Not Nothing then
 	
-		'Writes to the text file all target response times relative to experiment start.
-		If theResponseData.RTTime >= beginning And theResponseData.RTTime <= ending _
-		And (IsMissing(resp) Or Instr(CStr(resp), theResponseData.Resp) <> 0) Then _
+		For index = 1 To theHistory.Count
+	
+			Set theResponseData = CResponseData(theHistory(index))
+	
+			'Writes to the text file all target response times relative to experiment start.
+			If theResponseData.RTTime >= beginning And theResponseData.RTTime <= ending _
+			And (IsMissing(resp) Or Instr(CStr(resp), theResponseData.Resp) <> 0) Then _
 			Print #1, theResponseData.RESP & ebtab & theResponseData.RTTime
 				
-	Next index
+		Next index
 
+		Set theResponseData = Nothing
+		Set theHistory = Nothing
+	
+	End If
+	
 	Close #1
-
-	Set theResponseData = Nothing
-	Set theHistory = Nothing
 
 End Sub
