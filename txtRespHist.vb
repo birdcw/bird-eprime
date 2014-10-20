@@ -71,7 +71,7 @@ theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID As Varian
 	
 		'Writes to the text file all target response times relative to experiment start.
 		If theResponseData.RTTime >= beginning And theResponseData.RTTime <= ending _
-		And (IsMissing(resp) Or Instr(CStr(resp), theResponseData.Resp)) Then _
+		And (IsMissing(resp) Or Instr(CStr(resp), theResponseData.Resp) <> 0) Then _
 			Print #1, theResponseData.RESP & ebtab & theResponseData.RTTime
 				
 	Next index
