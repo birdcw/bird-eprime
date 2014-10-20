@@ -119,9 +119,9 @@ MUST SET A SUFFICIENTLY HIGH theDevice.History.MaxCount AT THE TOP Of THE Sessio
 
 theDevice: Any input device such as Keyboard, SRBox, etc.
 
-theStart: Any runnable object such as a stimulus display or procedure. The text file will only include input device activity that occurred after the start time of this object. Set theStart to your top-level procedure (i.e. SessionProc) if you want the text file to include input from the very beginning of your experiment.
+theStart: Any runnable object such as a stimulus display or procedure. The text file will only include input device activity that occurred after the start time of this object.
 
-theEnd: The other temporal bound. The text file will only include input device activity that occurred before the finish time of this object. Set theEnd to your top-level procedure (i.e. SessionProc) if you want the text file to include input all the way up until the moment this subroutine is called.
+theEnd: The other temporal bound. The text file will only include input device activity that occurred before the finish time of this object.
 
 resp: any string of eprime-style input "qwerty{SPACE}1234", etc. Optional - when resp is omitted, input is written to the text regardless of the value.
 
