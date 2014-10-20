@@ -1,5 +1,5 @@
-Sub txtRespHist(c As Context, theDevice As InputDevice, Optional theStart As RteRunnableObject, _
-Optional theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID As Variant)
+Sub txtRespHist(c As Context, theDevice As InputDevice, theStart As RteRunnableObject, _
+theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID As Variant)
 
 	' Eprime provides an input device history for storing the history of all 
 	' device input regardless of input masks used during the experiment. 
@@ -16,10 +16,12 @@ Optional theEnd As RteRunnableObject, Optional resp As Variant, Optional fileID 
 
 	' theStart: Any runnable object such as a stimulus display or procedure. 
 	' The text file will only include input device activity that occurred after the 
-	' start time of this object.
+	' start time of this object. To make theStart optional (no time constraint), set it to your 
+	' top level procedure object (i.e. Session Proc)
 	
 	' theEnd: The other temporal bound. The text file will only include input device activity 
-	' that occurred before the finish time of this object.
+	' that occurred before the finish time of this object. to make theEnd optional (no time constraint),
+	' set it to your top level procedure object (i.e. Session Proc)
 
 	' resp: any string of eprime-style input "qwerty{SPACE}1234", etc. Optional - when resp 
 	' is omitted, input is written to the text regardless of the value.
